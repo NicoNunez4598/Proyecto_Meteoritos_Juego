@@ -10,6 +10,9 @@
 radius = 38.6663
 
 [node name="Player" type="RigidBody2D"]
+z_index = 50
+z_as_relative = false
+collision_mask = 22
 physics_material_override = ExtResource( 2 )
 gravity_scale = 0.0
 can_sleep = false
