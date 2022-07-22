@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/lasernormal.ogg-ce085cb8813eeaf1e198a9d6610f1dfb.oggstr"
+
+[deps]
+
+source_file="res://Juego/Proyectiles/lasernormal.ogg"
+dest_files=[ "res://.import/lasernormal.ogg-ce085cb8813eeaf1e198a9d6610f1dfb.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
