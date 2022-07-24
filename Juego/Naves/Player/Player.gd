@@ -2,6 +2,9 @@
 class_name Player
 extends RigidBody2D
 
+## Enums
+enum ESTADO {SPAWN, VIVO, MUERTO, INVENCIBLE}
+
 ## Atributos Export
 export var potencia_motor:int = 20
 export var potencia_rotacion:int = 280
@@ -10,15 +13,23 @@ export var estela_maxima:int = 150
 ## Atributos
 var empuje:Vector2 = Vector2.ZERO
 var dir_rotacion:int = 0
+var estado_actual:int = ESTADO.SPAWN
 
 ## Atributos Onready
 onready var canion:Canion = $Canion
 onready var laser:RayoLaser = $LaserBeam2D
 onready var estela:Estela = $EstelaPuntoDeInicio/Trail2D
 onready var motor_sfx:Motor = $MotorSFX
+onready var colisionador:CollisionShape2D = $CollisionShape2D
 
 ## Metodos
+func _ready() -> void:
+	controlador_estados(estado_actual)
+
 func _unhandled_input(event: InputEvent) -> void:
+	if not esta_input_activo():
+		return
+
 	#Disparo Laser
 	if event.is_action_pressed("disparo_secundario"):
 		laser.set_is_casting(true)
@@ -46,6 +57,9 @@ func _process(delta: float) -> void:
 
 ## Metodos Custom
 func player_input() -> void:
+	if not esta_input_activo():
+		return
+	
 	# Empuje
 	empuje = Vector2.ZERO
 	if Input.is_action_pressed("mover_adelante"):
@@ -67,6 +81,30 @@ func player_input() -> void:
 	if Input.is_action_just_released("disparo_principal"):
 		canion.set_esta_disparando(false)
 
+func controlador_estados(nuevo_estado:int) -> void:
+	match nuevo_estado:
+		ESTADO.SPAWN:
+			colisionador.set_deferred("disabled", true)
+			canion.set_puede_disparar(false)
+		ESTADO.VIVO:
+			colisionador.set_deferred("disabled", false)
+			canion.set_puede_disparar(true)
+		ESTADO.INVENCIBLE:
+			colisionador.set_deferred("disabled", true)
+		ESTADO.MUERTO:
+			colisionador.set_deferred("disabled", true)
+			canion.set_puede_disparar(true)
+			queue_free()
+		_:
+			printerr("Error de Estado")
+	estado_actual = nuevo_estado
 
-func _ready():
-	pass # Replace with function body.
+func esta_input_activo() -> bool:
+	if estado_actual in [ESTADO.MUERTO, ESTADO.SPAWN]:
+		return false
+	return true
+
+## Señales Internas
+func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
+	if anim_name == "Spawn":
+		controlador_estados(ESTADO.VIVO)
