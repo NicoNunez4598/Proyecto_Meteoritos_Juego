@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Explosion_Nave.ogg-b9a58e79bc9c015c38c9d9858101b4dc.oggstr"
+
+[deps]
+
+source_file="res://Juego/Explosiones/Explosion_Nave.ogg"
+dest_files=[ "res://.import/Explosion_Nave.ogg-b9a58e79bc9c015c38c9d9858101b4dc.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
