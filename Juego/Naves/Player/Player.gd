@@ -9,6 +9,7 @@ enum ESTADO {SPAWN, VIVO, MUERTO, INVENCIBLE}
 export var potencia_motor:int = 20
 export var potencia_rotacion:int = 280
 export var estela_maxima:int = 150
+export var hitpoints:float = 15.0
 
 ## Atributos
 var empuje:Vector2 = Vector2.ZERO
@@ -107,6 +108,12 @@ func esta_input_activo() -> bool:
 	if estado_actual in [ESTADO.MUERTO, ESTADO.SPAWN]:
 		return false
 	return true
+
+func recibir_danio(danio: float) -> void:
+	hitpoints -= danio
+	if hitpoints <= 0.0:
+		destruir()
+	$AnimationPlayer.play("Danio")
 
 ## Señales Internas
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
