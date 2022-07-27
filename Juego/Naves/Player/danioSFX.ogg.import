@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/danioSFX.ogg-8373506e76bb97aa1ee079b9e227e2bd.oggstr"
+
+[deps]
+
+source_file="res://Juego/Naves/Player/danioSFX.ogg"
+dest_files=[ "res://.import/danioSFX.ogg-8373506e76bb97aa1ee079b9e227e2bd.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
