@@ -22,6 +22,7 @@ onready var laser:RayoLaser = $LaserBeam2D
 onready var estela:Estela = $EstelaPuntoDeInicio/Trail2D
 onready var motor_sfx:Motor = $MotorSFX
 onready var colisionador:CollisionShape2D = $CollisionShape2D
+onready var escudo:Escudo = $Escudo
 
 ## Metodos
 func _ready() -> void:
@@ -37,6 +38,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if event.is_action_released("disparo_secundario"):
 		laser.set_is_casting(false)
+	
+	#Control de Escudo
+	if event.is_action_pressed("activar_escudo") and not escudo.get_esta_activado():
+		escudo.activar()
 	
 	#Control de Estela y Sonido del Motor
 	if event.is_action_pressed("mover_adelante"):

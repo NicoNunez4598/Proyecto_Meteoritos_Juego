@@ -56,8 +56,6 @@ func set_is_casting(cast: bool) -> void:
 	casting_particles.emitting = is_casting
 
 
-# Controls the emission of particles and extends the Line2D to `cast_to` or the ray's 
-# collision point, whichever is closest.
 func cast_beam(delta: float) -> void:
 	var cast_point := cast_to
 
