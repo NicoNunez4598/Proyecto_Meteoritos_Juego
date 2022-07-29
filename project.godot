@@ -24,6 +24,21 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Juego/Naves/Player/Estela/Trail2D.gd"
 }, {
+"base": "Node2D",
+"class": "ExplosionMeteorito",
+"language": "GDScript",
+"path": "res://Juego/Explosiones/ExplosionMeteorito.gd"
+}, {
+"base": "RigidBody2D",
+"class": "Meteorito",
+"language": "GDScript",
+"path": "res://Juego/Meteoritos/Meteoritos.gd"
+}, {
+"base": "Position2D",
+"class": "MeteoritoSpawner",
+"language": "GDScript",
+"path": "res://Juego/Meteoritos/MeteoritoSpawner.gd"
+}, {
 "base": "AudioStreamPlayer2D",
 "class": "Motor",
 "language": "GDScript",
@@ -53,6 +68,9 @@ _global_script_class_icons={
 "Canion": "",
 "Escudo": "",
 "Estela": "",
+"ExplosionMeteorito": "",
+"Meteorito": "",
+"MeteoritoSpawner": "",
 "Motor": "",
 "Nivel": "",
 "Player": "",
@@ -69,6 +87,11 @@ config/icon="res://Icono_Nave.png"
 [autoload]
 
 Eventos="*res://Juego/Autoloads/Eventos.gd"
+
+[debug]
+
+gdscript/warnings/unused_signal=false
+gdscript/warnings/return_value_discarded=false
 
 [display]
 
