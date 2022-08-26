@@ -8,8 +8,7 @@ export var rango_tamanio_meteorito:Vector2 = Vector2(0.5, 2.2)
 
 ## Metodos
 func _ready():
-	yield(owner, "ready")
-	spawnear_meteorito()
+	pass
 
 ##Metodos Custom
 func spawnear_meteorito() -> void:
