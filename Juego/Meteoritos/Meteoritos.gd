@@ -5,7 +5,7 @@ extends RigidBody2D
 ## Atributos Export
 export var vel_lineal_base:Vector2 = Vector2(300.0, 300.0)
 export var vel_ang_base:float = 3.0
-export var hitpoints_base:float = 10.0
+export var hitpoints_base:float = 7.0
 
 ## Atibutos Onready
 onready var impacto_SFX:AudioStreamPlayer = $DanioSFX
@@ -16,6 +16,7 @@ var hitpoints:float
 var esta_en_sector:bool = true setget set_esta_en_sector
 var pos_spawn_original:Vector2
 var vel_spawn_original:Vector2
+var esta_destruido:bool = false
 
 ## Metodos
 func _ready() -> void:
@@ -58,6 +59,7 @@ func _integrate_forces(state: Physics2DDirectBodyState) -> void:
 func recibir_danio(danio:float) -> void:
 	hitpoints -= danio
 	if hitpoints <= 0.0:
+		esta_destruido = true
 		destruir()
 	animacion.play("recibir_danio")
 
