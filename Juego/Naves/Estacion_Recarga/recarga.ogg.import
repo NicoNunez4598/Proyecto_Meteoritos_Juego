@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/recarga.ogg-a9d3fabcbd398fbbf3fde8289efba210.oggstr"
+
+[deps]
+
+source_file="res://Juego/Naves/Estacion_Recarga/recarga.ogg"
+dest_files=[ "res://.import/recarga.ogg-a9d3fabcbd398fbbf3fde8289efba210.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
