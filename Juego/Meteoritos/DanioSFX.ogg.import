@@ -11,5 +11,5 @@ dest_files=[ "res://.import/DanioSFX.ogg-7745b0bd8be411ae3221d26be03e4ac7.oggstr
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
