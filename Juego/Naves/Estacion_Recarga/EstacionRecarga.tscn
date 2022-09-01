@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://TemporalAssets/PNG/Sprites/Station/spaceStation_021.png" type="Texture" id=1]
-[ext_resource path="res://TemporalAssets/PNG/dotBlue.png" type="Texture" id=2]
+[ext_resource path="res://Juego/Naves/Estacion_Recarga/Estacion_Recarga.png" type="Texture" id=1]
+[ext_resource path="res://Juego/Naves/Estacion_Recarga/Area_recarga.png" type="Texture" id=2]
 [ext_resource path="res://Juego/Naves/Estacion_Recarga/EstacionRecarga.gd" type="Script" id=3]
 [ext_resource path="res://Juego/Naves/Estacion_Recarga/vacio.ogg" type="AudioStream" id=4]
 [ext_resource path="res://Juego/Naves/Estacion_Recarga/recarga.ogg" type="AudioStream" id=5]
@@ -55,7 +55,7 @@ tracks/2/keys = {
 "values": [ Vector2( 37, 37 ), Vector2( 32, 32 ), Vector2( 37, 37 ), Vector2( 32, 32 ), Vector2( 37, 37 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "carga"
 tracks/0/type = "value"
 tracks/0/path = NodePath("CargaSFX:playing")
@@ -70,8 +70,7 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "default"
+[sub_resource type="Animation" id=5]
 
 [sub_resource type="Animation" id=6]
 resource_name = "vacio"
@@ -120,8 +119,8 @@ texture = ExtResource( 2 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "activado"
 anims/activado = SubResource( 3 )
-anims/carga = SubResource( 5 )
-anims/default = SubResource( 4 )
+anims/carga = SubResource( 4 )
+anims/default = SubResource( 5 )
 anims/vacio = SubResource( 6 )
 
 [node name="CargaSFX" type="AudioStreamPlayer" parent="."]

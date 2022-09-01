@@ -33,9 +33,6 @@ numero_peligros = 5
 [node name="EstacionRecarga" parent="Contenedor_de_Estaciones" instance=ExtResource( 12 )]
 position = Vector2( 432.261, 678.056 )
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 298.769, 204.476 )
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 3 )
 
@@ -121,5 +118,7 @@ texture = ExtResource( 8 )
 [node name="Sprite15" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2( 1827, 1130 )
 texture = ExtResource( 8 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
 
 [connection signal="tween_completed" from="TweenCamara" to="." method="_on_TweenCamara_tween_completed"]
