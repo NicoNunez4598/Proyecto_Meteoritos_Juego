@@ -18,6 +18,7 @@ func get_esta_activado() -> bool:
 func _ready() -> void:
 	controlar_colisionador(true)
 	energia_original = energia
+	set_process(false)
 
 func _process(delta:float) -> void:
 	controlar_energia(radio_desgaste * delta)

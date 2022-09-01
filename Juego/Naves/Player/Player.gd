@@ -37,7 +37,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	#Control de Escudo
 	if event.is_action_pressed("activar_escudo") and not escudo.get_esta_activado():
-		print("escudo")
 		escudo.activar()
 	
 	#Control de Estela y Sonido del Motor
@@ -88,8 +87,3 @@ func esta_input_activo() -> bool:
 	if estado_actual in [ESTADO.MUERTO, ESTADO.SPAWN]:
 		return false
 	return true
-
-## Señales Internas
-func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
-	if anim_name == "Spawn":
-		controlador_estados(ESTADO.VIVO)
