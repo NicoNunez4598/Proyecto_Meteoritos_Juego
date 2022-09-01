@@ -48,6 +48,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	#Control de Escudo
 	if event.is_action_pressed("activar_escudo") and not escudo.get_esta_activado():
+		print("escudo")
 		escudo.activar()
 	
 	#Control de Estela y Sonido del Motor

@@ -95,6 +95,7 @@ bus = "SFX"
 [node name="Escudo" parent="." instance=ExtResource( 9 )]
 
 [node name="CameraPlayer" type="Camera2D" parent="."]
+current = true
 script = ExtResource( 10 )
 
 [node name="TweenZoom" type="Tween" parent="CameraPlayer"]
