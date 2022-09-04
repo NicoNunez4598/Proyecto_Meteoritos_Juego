@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Juego/Estaciones/AreaAtraccion.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Juego/Estaciones/Base_Enemiga/Parte3.png" type="Texture" id=2]
@@ -8,23 +8,24 @@
 [ext_resource path="res://Juego/Estaciones/Base_Enemiga/BaseEnemiga.gd" type="Script" id=6]
 [ext_resource path="res://Juego/Estaciones/Base_Enemiga/Impacto.ogg" type="AudioStream" id=7]
 [ext_resource path="res://Juego/Estaciones/Base_Enemiga/AreaColision.gd" type="Script" id=8]
+[ext_resource path="res://Juego/Enemigos/Enemigo_Orbital/EnemigoOrbital.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Juego/Estaciones/Base_Enemiga/PosicionesSpawn.gd" type="Script" id=10]
 
-[sub_resource type="CapsuleShape2D" id=4]
+[sub_resource type="CapsuleShape2D" id=1]
 radius = 72.5139
 height = 408.209
 
-[sub_resource type="CapsuleShape2D" id=5]
+[sub_resource type="CapsuleShape2D" id=2]
 radius = 34.9075
 height = 4.77191
 
-[sub_resource type="CapsuleShape2D" id=6]
+[sub_resource type="CapsuleShape2D" id=3]
 radius = 24.9319
 height = 79.3481
 
-[sub_resource type="Animation" id=1]
-resource_name = "default"
+[sub_resource type="Animation" id=4]
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=5]
 resource_name = "rotar_pendulo"
 length = 5.0
 loop = true
@@ -42,8 +43,7 @@ tracks/0/keys = {
 "values": [ 90.0, -90.0, 90.0, -90.0, 90.0, -90.0 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "rotar_sentido_antihorario"
+[sub_resource type="Animation" id=6]
 length = 5.0
 loop = true
 tracks/0/type = "value"
@@ -71,8 +71,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "rotar_sentido_horario"
+[sub_resource type="Animation" id=7]
 length = 5.0
 loop = true
 tracks/0/type = "value"
@@ -102,27 +101,27 @@ tracks/1/keys = {
 
 [node name="BaseEnemiga" type="Node2D"]
 script = ExtResource( 6 )
+enemigo_orbital = ExtResource( 9 )
 
 [node name="Sprites" type="Node2D" parent="."]
-rotation = 1.5708
 
 [node name="AreaColision" type="Area2D" parent="Sprites"]
 rotation = 1.74846e-07
 collision_layer = 32
-collision_mask = 27
+collision_mask = 11
 script = ExtResource( 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprites/AreaColision"]
-shape = SubResource( 4 )
+shape = SubResource( 1 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Sprites/AreaColision"]
 position = Vector2( -104.652, -76.3676 )
-shape = SubResource( 5 )
+shape = SubResource( 2 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Sprites/AreaColision"]
 position = Vector2( 134.35, -79.196 )
 rotation = 1.5708
-shape = SubResource( 6 )
+shape = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="Sprites"]
 position = Vector2( 148.37, -78.9525 )
@@ -151,10 +150,10 @@ visible = false
 visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/default = SubResource( 1 )
-anims/rotar_pendulo = SubResource( 7 )
-anims/rotar_sentido_antihorario = SubResource( 2 )
-anims/rotar_sentido_horario = SubResource( 3 )
+anims/default = SubResource( 4 )
+anims/rotar_pendulo = SubResource( 5 )
+anims/rotar_sentido_antihorario = SubResource( 6 )
+anims/rotar_sentido_horario = SubResource( 7 )
 
 [node name="Impacto_SFX" type="AudioStreamPlayer2D" parent="."]
 visible = false
@@ -163,6 +162,22 @@ stream = ExtResource( 7 )
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 visible = false
 
+[node name="PosicionesSpawn" type="Node2D" parent="."]
+script = ExtResource( 10 )
+
+[node name="Norte" type="Position2D" parent="PosicionesSpawn"]
+position = Vector2( 0, -500 )
+
+[node name="Sur" type="Position2D" parent="PosicionesSpawn"]
+position = Vector2( 0, 500 )
+
+[node name="Este" type="Position2D" parent="PosicionesSpawn"]
+position = Vector2( -500, 0 )
+
+[node name="Oeste" type="Position2D" parent="PosicionesSpawn"]
+position = Vector2( 500, 0 )
+
 [connection signal="body_entered" from="Sprites/AreaColision" to="." method="_on_AreaColision_body_entered"]
+[connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
 
 [editable path="AreaAtraccion"]

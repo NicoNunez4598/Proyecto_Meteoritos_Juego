@@ -34,10 +34,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Juego/Enemigos/EnemigoBase.gd"
 }, {
-"base": "EnemigoBase",
+"base": "Reference",
 "class": "EnemigoInterceptor",
 "language": "GDScript",
-"path": "res://Juego/Enemigos/EnemigoInterceptor.gd"
+"path": "res://Juego/Enemigos/Enemigo_Interceptor/EnemigoInterceptor.gd"
+}, {
+"base": "EnemigoBase",
+"class": "EnemigoOrbital",
+"language": "GDScript",
+"path": "res://Juego/Enemigos/Enemigo_Orbital/EnemigoOrbital.gd"
 }, {
 "base": "Area2D",
 "class": "Escudo",
@@ -111,6 +116,7 @@ _global_script_class_icons={
 "Canion": "",
 "EnemigoBase": "",
 "EnemigoInterceptor": "",
+"EnemigoOrbital": "",
 "Escudo": "",
 "EstacionRecarga": "",
 "Estela": "",

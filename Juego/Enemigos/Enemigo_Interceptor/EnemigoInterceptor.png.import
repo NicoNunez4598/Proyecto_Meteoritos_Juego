@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/EnemigoInterceptor.png-e750243bad98562dea6b2c0ee0eff2fa.stex"
+path="res://.import/EnemigoInterceptor.png-81c20ce6eacde046f00e778bb06fdb41.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Juego/Enemigos/EnemigoInterceptor.png"
-dest_files=[ "res://.import/EnemigoInterceptor.png-e750243bad98562dea6b2c0ee0eff2fa.stex" ]
+source_file="res://Juego/Enemigos/Enemigo_Interceptor/EnemigoInterceptor.png"
+dest_files=[ "res://.import/EnemigoInterceptor.png-81c20ce6eacde046f00e778bb06fdb41.stex" ]
 
 [params]
 

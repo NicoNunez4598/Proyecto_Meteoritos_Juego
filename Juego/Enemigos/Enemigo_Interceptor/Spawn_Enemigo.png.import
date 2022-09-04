@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Spawn_Enemigo.png-b24571877497c889811f65cafb2825d5.stex"
+path="res://.import/Spawn_Enemigo.png-7c60d06d498fbf717ceb02e132dbe410.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Juego/Enemigos/Spawn_Enemigo.png"
-dest_files=[ "res://.import/Spawn_Enemigo.png-b24571877497c889811f65cafb2825d5.stex" ]
+source_file="res://Juego/Enemigos/Enemigo_Interceptor/Spawn_Enemigo.png"
+dest_files=[ "res://.import/Spawn_Enemigo.png-7c60d06d498fbf717ceb02e132dbe410.stex" ]
 
 [params]
 
