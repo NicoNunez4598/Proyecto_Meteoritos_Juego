@@ -3,17 +3,21 @@ class_name BaseEnemiga
 extends Node2D
 
 ## Atributos Export
-export var hitpoints:float = 30.0
 export var enemigo_orbital:PackedScene = null
+export var hitpoints:float = 30.0
+export var numero_enemigos:float = 10.0
+export var intervalo_spawn:float = 0.8
 
 ## Atributos Onready
 onready var impacto_sfx:AudioStreamPlayer2D = $Impacto_SFX
+onready var timer_spawn:Timer = $TimerSpawnEnemigos
 
 ## Atributos
 var esta_destruida:bool = false
 
 ## Metodos
 func _ready() -> void:
+	timer_spawn.wait_time = intervalo_spawn
 	$AnimationPlayer.play(elegir_explosion_aleatoria())
 
 func _process(delta: float) -> void:
@@ -59,26 +63,32 @@ func deteccion_cuadrante() -> Vector2:
 	var angulo_player:float = rad2deg(dir_player.angle())
 	
 	if abs(angulo_player) <= 45.0:
+		$RutaEnemigo.rotation_degrees = 180.0
 		return $PosicionesSpawn/Este.position
 	elif abs(angulo_player) > 135.0 and abs(angulo_player) <= 180.0:
+		$RutaEnemigo.rotation_degrees = 0.0
 		return $PosicionesSpawn/Oeste.position
 	elif abs(angulo_player) > 45.0 and abs(angulo_player) <= 135.0:
 		if sign(angulo_player) > 0:
+			$RutaEnemigo.rotation_degrees = 270.0
 			return $PosicionesSpawn/Sur.position
 		else:
+			$RutaEnemigo.rotation_degrees = 90.0
 			return $PosicionesSpawn/Norte.position
 	
 	return $PosicionesSpawn/Norte.position
 
 func spawnear_orbital() -> void:
+	numero_enemigos -= 1
 	var pos_spawn:Vector2 = deteccion_cuadrante()
+	$RutaEnemigo.global_position = global_position
 	
 	var new_orbital:EnemigoOrbital = enemigo_orbital.instance()
 	new_orbital.crear(
 		global_position + pos_spawn,
-		self
+		self,
+		$RutaEnemigo
 	)
-	
 	Eventos.emit_signal("spawn_orbital", new_orbital)
 
 ## Señales Internas
@@ -88,4 +98,11 @@ func _on_AreaColision_body_entered(body: Node) -> void:
 
 func _on_VisibilityNotifier2D_screen_entered() -> void:
 	$VisibilityNotifier2D.queue_free()
+	spawnear_orbital()
+	timer_spawn.start()
+
+func _on_TimerSpawnEnemigos_timeout() -> void:
+	if numero_enemigos == 0:
+		timer_spawn.stop()
+		return
 	spawnear_orbital()
