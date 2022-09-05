@@ -8,6 +8,7 @@ export var meteorito:PackedScene = null
 export var explosion_meteorito:PackedScene = null
 export var sector_meteoritos:PackedScene = null
 export var enemigo_interceptor:PackedScene = null
+export var rele_masa:PackedScene = null
 export var tiempo_transicion_camara:float = 1.5
 
 ## Atributos Onready
@@ -21,11 +22,13 @@ onready var camara_player:Camera2D = $Player/CameraPlayer
 ## Atributos
 var total_meteoritos:int = 0
 var player:Player = null
+var numero_bases_enemigas = 0
 
 ## Metodos
 func _ready() -> void:
 	conectar_seniales()
 	crear_contenedores()
+	numero_bases_enemigas = contabilizar_bases_enemigas()
 	player = DatosJuego.get_player_actual()
 
 ## Metodos Custom
@@ -116,6 +119,14 @@ func crear_explosiones(posicion: Vector2, escala:float = 1.0, numero:int = 1, in
 		add_child(new_explosion)
 		yield(get_tree().create_timer(intervalo),"timeout")
 
+func contabilizar_bases_enemigas() -> int:
+	return $Contenedores_Bases_Enemigas.get_child_count()
+
+func crear_rele() -> void:
+	var new_rele_masa:ReleMasa = rele_masa.instance()
+	new_rele_masa.global_position = player.global_position + crear_posicion_aleatoria(1000.0, 800.0)
+	add_child(new_rele_masa)
+
 ## Conexion de Señales Externas
 func _on_disparo(proyectil:Proyectil) -> void:
 	add_child(proyectil)
@@ -134,6 +145,10 @@ func _on_base_destruida(_base, pos_partes: Array) -> void:
 	for posicion in pos_partes:
 		crear_explosiones(posicion, 2.0)
 		yield(get_tree().create_timer(0.5), "timeout")
+	
+	numero_bases_enemigas -= 1
+	if numero_bases_enemigas == 0:
+		crear_rele()
 
 func _on_spawn_meteoritos(pos_spawn:Vector2, dir_meteorito:Vector2, tamanio: float) -> void:
 	var new_meteorito:Meteorito = meteorito.instance()
