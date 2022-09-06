@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Juego/Estaciones/AreaAtraccion.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Juego/Estaciones/Base_Enemiga/Parte3.png" type="Texture" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://Juego/Estaciones/Base_Enemiga/AreaColision.gd" type="Script" id=8]
 [ext_resource path="res://Juego/Enemigos/Enemigo_Orbital/EnemigoOrbital.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Juego/Estaciones/Base_Enemiga/PosicionesSpawn.gd" type="Script" id=10]
+[ext_resource path="res://Juego/Enemigos/Rutas_Enemigas/RutaEnemigo.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Juego/Enemigos/Rutas_Enemigas/RutaEnemiga2.tscn" type="PackedScene" id=12]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 72.5139
@@ -99,16 +101,12 @@ tracks/1/keys = {
 "values": [ 0.0, 360.0 ]
 }
 
-[sub_resource type="Curve2D" id=8]
-_data = {
-"points": PoolVector2Array( 0, 0, 0, 0, -450.326, -0.877869, 0, 0, 0, 0, -434.594, -115.498, 0, 0, 0, 0, -389.318, -223.977, 0, 0, 0, 0, -317.001, -318.157, 0, 0, 0, 0, -225.246, -389.627, 0, 0, 0, 0, -116.771, -434.194, 0, 0, 0, 0, -1.56775, -451.012, 0, 0, 0, 0, 116.158, -434.194, 0, 0, 0, 0, 222.305, -388.786, 0, 0, 0, 0, 315.645, -318.992, 0, 0, 0, 0, 387.962, -225.652, 0, 0, 0, 0, 435.052, -116.459, 0, 0, 0, 0, 449.347, -0.415604, 0, 0, 0, 0, 432.529, 117.469, 0, 0, 0, 0, 388.803, 223.422, 0, 0, 0, 0, 317.326, 317.651, 0, 0, 0, 0, 224.828, 389.127, 0, 0, 0, 0, 115.511, 433.694, 0, 0, 0, 0, -0.532501, 449.671, 0, 0, 0, 0, -115.735, 432.853, 0, 0, 0, 0, -225.407, 388.513, 0, 0, 0, 0, -318.746, 317.037, 0, 0, 0, 0, -388.541, 226.22, 0, 0, 0, 0, -435.631, 112.368, 0, 0, 0, 0, -450.528, -1.47194 )
-}
-
 [node name="BaseEnemiga" type="Node2D"]
 script = ExtResource( 6 )
 enemigo_orbital = ExtResource( 9 )
 numero_enemigos = 6.0
 intervalo_spawn = 1.0
+rutas = [ ExtResource( 11 ), ExtResource( 12 ) ]
 
 [node name="Sprites" type="Node2D" parent="."]
 
@@ -180,9 +178,6 @@ position = Vector2( -450, 0 )
 
 [node name="Oeste" type="Position2D" parent="PosicionesSpawn"]
 position = Vector2( 450, 0 )
-
-[node name="RutaEnemigo" type="Path2D" parent="."]
-curve = SubResource( 8 )
 
 [node name="TimerSpawnEnemigos" type="Timer" parent="."]
 
