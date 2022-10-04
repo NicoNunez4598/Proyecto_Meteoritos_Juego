@@ -11,10 +11,8 @@ export var zoom_maximo:float = 2.0
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("zoom_acercar"):
 		controlar_zoom(-variacion_zoom)
-		print("acerca")
 	elif event.is_action_pressed("zoom_alejar"):
 		controlar_zoom(variacion_zoom)
-		print("alejar")
 
 ## Metodos Custom
 func controlar_zoom(mod_zoom:float) -> void:

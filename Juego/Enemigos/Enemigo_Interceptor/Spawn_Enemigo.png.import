@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Estacion_Recarga.png-5fbff277b2a5cbdc1bd8f9215f4e97fb.stex"
+path="res://.import/Spawn_Enemigo.png-7c60d06d498fbf717ceb02e132dbe410.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Juego/Naves/Estacion_Recarga/Estacion_Recarga.png"
-dest_files=[ "res://.import/Estacion_Recarga.png-5fbff277b2a5cbdc1bd8f9215f4e97fb.stex" ]
+source_file="res://Juego/Enemigos/Enemigo_Interceptor/Spawn_Enemigo.png"
+dest_files=[ "res://.import/Spawn_Enemigo.png-7c60d06d498fbf717ceb02e132dbe410.stex" ]
 
 [params]
 

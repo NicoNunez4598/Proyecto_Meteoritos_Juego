@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "BaseEnemiga",
+"language": "GDScript",
+"path": "res://Juego/Estaciones/Base_Enemiga/BaseEnemiga.gd"
+}, {
 "base": "Camera2D",
 "class": "CamaraJuego",
 "language": "GDScript",
@@ -24,6 +29,21 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Juego/Proyectiles/Canion.gd"
 }, {
+"base": "NaveBase",
+"class": "EnemigoBase",
+"language": "GDScript",
+"path": "res://Juego/Enemigos/EnemigoBase.gd"
+}, {
+"base": "EnemigoBase",
+"class": "EnemigoInterceptor",
+"language": "GDScript",
+"path": "res://Juego/Enemigos/Enemigo_Interceptor/EnemigoInterceptor.gd"
+}, {
+"base": "EnemigoBase",
+"class": "EnemigoOrbital",
+"language": "GDScript",
+"path": "res://Juego/Enemigos/Enemigo_Orbital/EnemigoOrbital.gd"
+}, {
 "base": "Area2D",
 "class": "Escudo",
 "language": "GDScript",
@@ -32,7 +52,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "EstacionRecarga",
 "language": "GDScript",
-"path": "res://Juego/Naves/Estacion_Recarga/EstacionRecarga.gd"
+"path": "res://Juego/Estaciones/Estacion_Recarga/EstacionRecarga.gd"
 }, {
 "base": "Line2D",
 "class": "Estela",
@@ -85,14 +105,23 @@ _global_script_classes=[ {
 "path": "res://Juego/Proyectiles/Laser/LaserBeam2D.gd"
 }, {
 "base": "Node2D",
+"class": "ReleMasa",
+"language": "GDScript",
+"path": "res://Juego/Estaciones/Rele/ReleMasa.gd"
+}, {
+"base": "Node2D",
 "class": "SectorMeteoritos",
 "language": "GDScript",
 "path": "res://Juego/Meteoritos/SectorMeteoritos.gd"
 } ]
 _global_script_class_icons={
+"BaseEnemiga": "",
 "CamaraJuego": "",
 "CamaraPlayer": "",
 "Canion": "",
+"EnemigoBase": "",
+"EnemigoInterceptor": "",
+"EnemigoOrbital": "",
 "Escudo": "",
 "EstacionRecarga": "",
 "Estela": "",
@@ -105,6 +134,7 @@ _global_script_class_icons={
 "Player": "",
 "Proyectil": "",
 "RayoLaser": "",
+"ReleMasa": "",
 "SectorMeteoritos": ""
 }
 
@@ -117,6 +147,7 @@ config/icon="res://Icono_Nave.png"
 [autoload]
 
 Eventos="*res://Juego/Autoloads/Eventos.gd"
+DatosJuego="*res://Juego/Autoloads/DatosJuego.gd"
 
 [debug]
 
@@ -207,6 +238,7 @@ recargar_laser={
 2d_physics/layer_3="Meteoritos"
 2d_physics/layer_4="Proyectil_Player"
 2d_physics/layer_5="Proyectil_Enemigo"
+2d_physics/layer_6="Base_Enemiga"
 
 [physics]
 
