@@ -53,26 +53,34 @@ stretch_mode = 2
 anims/default = SubResource( 1 )
 anims/fade_in = SubResource( 2 )
 
-[node name="InfoZonaRecarga" parent="." instance=ExtResource( 3 )]
+[node name="InfoZonaRecarga" parent="." groups=[
+"contenedor_info",
+] instance=ExtResource( 3 )]
 
 [node name="Label" parent="InfoZonaRecarga" index="1"]
 text = "En Zona
 de Recarga
 "
 
-[node name="InfoZonaMeteoritos" parent="." instance=ExtResource( 3 )]
+[node name="InfoZonaMeteoritos" parent="." groups=[
+"contenedor_info",
+] instance=ExtResource( 3 )]
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_top = -121.0
 margin_bottom = 0.0
 
-[node name="InfoTiempoRestante" parent="." instance=ExtResource( 3 )]
+[node name="InfoTiempoRestante" parent="." groups=[
+"contenedor_info",
+] instance=ExtResource( 3 )]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -357.0
 margin_right = 0.0
 
-[node name="InfoLaser" parent="." instance=ExtResource( 4 )]
+[node name="InfoLaser" parent="." groups=[
+"contenedor_info",
+] instance=ExtResource( 4 )]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -86,7 +94,24 @@ margin_bottom = 0.0
 text = "Energia Laser
 "
 
+[node name="InfoEscudo" parent="." groups=[
+"contenedor_info",
+] instance=ExtResource( 4 )]
+anchor_left = 0.999534
+anchor_top = 0.831198
+anchor_right = 0.999534
+anchor_bottom = 0.831198
+margin_left = -357.0
+margin_top = -60.5
+margin_right = 0.0
+margin_bottom = 60.5
+
+[node name="Label" parent="InfoEscudo" index="1"]
+text = "Energia Escudo
+"
+
 [editable path="InfoZonaRecarga"]
 [editable path="InfoZonaMeteoritos"]
 [editable path="InfoTiempoRestante"]
 [editable path="InfoLaser"]
+[editable path="InfoEscudo"]

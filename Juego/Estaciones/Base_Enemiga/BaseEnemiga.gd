@@ -23,7 +23,7 @@ func _ready() -> void:
 	$AnimationPlayer.play(elegir_explosion_aleatoria())
 	seleccionar_ruta()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var player_objetivo:Player = DatosJuego.get_player_actual()
 	if not player_objetivo:
 		return

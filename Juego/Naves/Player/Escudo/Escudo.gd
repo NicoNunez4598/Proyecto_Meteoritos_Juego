@@ -46,7 +46,11 @@ func controlar_energia(consumo: float) -> void:
 	if energia > energia_original:
 		energia = energia_original
 	elif energia <= 0.0:
+		Eventos.emit_signal("ocultar_energia_escudo")
 		desactivar()
+		return
+	Eventos.emit_signal("cambio_energia_escudo", energia_original, energia)
+	print(energia)
 
 ## Señales Internas
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:

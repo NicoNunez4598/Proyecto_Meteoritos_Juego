@@ -141,6 +141,7 @@ texture = ExtResource( 8 )
 [node name="Player" parent="." instance=ExtResource( 1 )]
 
 [node name="RestartTimer" type="Timer" parent="."]
+one_shot = true
 
 [node name="ActualizadorTimer" type="Timer" parent="."]
 

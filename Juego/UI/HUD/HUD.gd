@@ -6,6 +6,7 @@ onready var info_zona_recarga:ContenedorInformacion = $InfoZonaRecarga
 onready var info_zona_meteoritos:ContenedorInformacion = $InfoZonaMeteoritos
 onready var info_tiempo_restante:ContenedorInformacion = $InfoTiempoRestante
 onready var info_laser:ContenedorInformacionEnergia = $InfoLaser
+onready var info_escudo:ContenedorInformacionEnergia = $InfoEscudo
 
 ## Metodos
 func _ready() -> void:
@@ -20,6 +21,9 @@ func conectar_seniales() -> void:
 	Eventos.connect("actualizar_tiempo", self, "_on_actualizar_info_tiempo")
 	Eventos.connect("cambio_energia_laser", self, "_on_actualizar_energia_laser")
 	Eventos.connect("ocultar_energia_laser", info_laser, "ocultar")
+	Eventos.connect("cambio_energia_escudo", self, "_on_actualizar_energia_escudo")
+	Eventos.connect("ocultar_energia_escudo", info_escudo, "ocultar")
+	Eventos.connect("nave_destruida", self, "_on_nave_destruida")
 
 func fade_in() -> void:
 	$FadeCanvas/AnimationPlayer.play("fade_in")
@@ -55,3 +59,12 @@ func _on_actualizar_info_tiempo(tiempo_restante: int) -> void:
 func _on_actualizar_energia_laser(energia_max:float, energia_actual:float) -> void:
 	info_laser.mostrar()
 	info_laser.actualizar_energia(energia_max, energia_actual)
+
+func _on_actualizar_energia_escudo(energia_max:float, energia_actual:float) -> void:
+	info_escudo.mostrar()
+	info_escudo.actualizar_energia(energia_max, energia_actual)
+
+func _on_nave_destruida(nave: NaveBase, _posicion, _explosiones) -> void:
+	if nave is Player:
+		get_tree().call_group("contenedor_info", "set_esta_activo", false)
+		get_tree().call_group("contenedor_info", "ocultar")
