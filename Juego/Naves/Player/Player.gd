@@ -24,6 +24,9 @@ func get_escudo() -> Escudo:
 	return escudo
 
 ## Metodos
+func _ready() -> void:
+	DatosJuego.set_player_actual(self)
+
 func _unhandled_input(event: InputEvent) -> void:
 	if not esta_input_activo():
 		return
@@ -37,7 +40,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	#Control de Escudo
 	if event.is_action_pressed("activar_escudo") and not escudo.get_esta_activado():
-		print("escudo")
 		escudo.activar()
 	
 	#Control de Estela y Sonido del Motor
@@ -84,12 +86,13 @@ func player_input() -> void:
 	if Input.is_action_just_released("disparo_principal"):
 		canion.set_esta_disparando(false)
 
+func desactivar_controladores() -> void:
+	controlador_estados(ESTADO.SPAWN)
+	empuje = Vector2.ZERO
+	motor_sfx.sonido_off()
+	laser.set_is_casting(false)
+
 func esta_input_activo() -> bool:
 	if estado_actual in [ESTADO.MUERTO, ESTADO.SPAWN]:
 		return false
 	return true
-
-## Señales Internas
-func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
-	if anim_name == "Spawn":
-		controlador_estados(ESTADO.VIVO)
