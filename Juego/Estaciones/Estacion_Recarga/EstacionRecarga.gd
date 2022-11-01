@@ -1,10 +1,10 @@
-#EstacionRecarga
+#EstacionRecarga.gd
 class_name EstacionRecarga
 extends Node2D
 
 ## Atributos Export
-export var energia:float = 6.0
-export var radio_energia_entregada:float = 0.5
+export var energia:float = 8.0
+export var radio_energia_entregada:float = 0.1
 
 ## Atributos
 var nave_player:Player = null
@@ -19,10 +19,15 @@ func _unhandled_input(event: InputEvent) -> void:
 	if not puede_recargar(event):
 		return
 	controlar_enegia()
-	if event.is_action_pressed("recargar_escudo"):
+	if event.is_action("recargar_escudo"):
 		nave_player.get_escudo().controlar_energia(radio_energia_entregada)
-	elif event.is_action_pressed("recargar_laser"):
+	elif event.is_action("recargar_laser"):
 		nave_player.get_laser().controlar_energia(radio_energia_entregada)
+	
+	if event.is_action_released("recargar_laser"):
+		Eventos.emit_signal("ocultar_energia_laser")
+	elif event.is_action_released("recargar_escudo"):
+		Eventos.emit_signal("ocultar_energia_escudo")
 
 ## Metodos Custom
 func puede_recargar(event: InputEvent) -> bool:
@@ -43,12 +48,13 @@ func _on_AreaColision_body_entered(body: Node) -> void:
 	if body.has_method("destruir"):
 		body.destruir()
 
-func _on_AreaRecarga_body_entered(body: Node) -> void:
-	player_en_zona = true
+func _on_AreaAtraccion_body_entered(body: Node) -> void:
 	if body is Player:
+		player_en_zona = true
 		nave_player = body
-	body.set_gravity_scale(0.1)
+		Eventos.emit_signal("detecto_zona_recarga", true)
 
-func _on_AreaRecarga_body_exited(body: Node) -> void:
-	player_en_zona = false
-	body.set_gravity_scale(0.0)
+func _on_AreaAtraccion_body_exited(body: Node) -> void:
+	if body is Player:
+		player_en_zona = false
+		Eventos.emit_signal("detecto_zona_recarga", false)

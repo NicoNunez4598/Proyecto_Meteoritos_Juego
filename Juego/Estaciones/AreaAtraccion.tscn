@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Juego/Estaciones/Estacion_Recarga/Area_recarga.png" type="Texture" id=1]
+[ext_resource path="res://Juego/Estaciones/AreaAtraccion.gd" type="Script" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 449.808
+
+[node name="AreaAtraccion" type="Area2D"]
+space_override = 1
+gravity_point = true
+gravity = 1000.0
+collision_layer = 0
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="SpriteZonaRecarga" type="Sprite" parent="."]
+modulate = Color( 0.54902, 0.54902, 0.54902, 0.392157 )
+position = Vector2( 0.8685, 1.22118 )
+scale = Vector2( 37, 37 )
+texture = ExtResource( 1 )
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

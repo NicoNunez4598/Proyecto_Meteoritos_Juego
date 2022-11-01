@@ -1,0 +1,190 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://Juego/Estaciones/AreaAtraccion.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Juego/Estaciones/Base_Enemiga/Parte3.png" type="Texture" id=2]
+[ext_resource path="res://Juego/Estaciones/Base_Enemiga/Parte2.png" type="Texture" id=3]
+[ext_resource path="res://Juego/Estaciones/Base_Enemiga/Parte4.png" type="Texture" id=4]
+[ext_resource path="res://Juego/Estaciones/Base_Enemiga/Parte1.png" type="Texture" id=5]
+[ext_resource path="res://Juego/Estaciones/Base_Enemiga/BaseEnemiga.gd" type="Script" id=6]
+[ext_resource path="res://Juego/Estaciones/Base_Enemiga/Impacto.ogg" type="AudioStream" id=7]
+[ext_resource path="res://Juego/Estaciones/Base_Enemiga/AreaColision.gd" type="Script" id=8]
+[ext_resource path="res://Juego/Enemigos/Enemigo_Orbital/EnemigoOrbital.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Juego/Estaciones/Base_Enemiga/PosicionesSpawn.gd" type="Script" id=10]
+[ext_resource path="res://Juego/Enemigos/Rutas_Enemigas/RutaEnemigo.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Juego/Enemigos/Rutas_Enemigas/RutaEnemiga2.tscn" type="PackedScene" id=12]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 72.5139
+height = 408.209
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 34.9075
+height = 4.77191
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 24.9319
+height = 79.3481
+
+[sub_resource type="Animation" id=4]
+
+[sub_resource type="Animation" id=5]
+resource_name = "rotar_pendulo"
+length = 5.0
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 90.0, -90.0, 90.0, -90.0, 90.0, -90.0 ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AreaAtraccion/SpriteZonaRecarga:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -360.0 ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AreaAtraccion/SpriteZonaRecarga:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+
+[node name="BaseEnemiga" type="Node2D" groups=[
+"minimapa",
+]]
+script = ExtResource( 6 )
+enemigo_orbital = ExtResource( 9 )
+numero_enemigos = 6.0
+intervalo_spawn = 1.0
+rutas = [ ExtResource( 11 ), ExtResource( 12 ) ]
+
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Sprites"]
+position = Vector2( 148.37, -78.9525 )
+rotation = 3.14159
+texture = ExtResource( 5 )
+
+[node name="Sprite2" type="Sprite" parent="Sprites"]
+position = Vector2( 0, 37.4577 )
+scale = Vector2( 1, 1.18729 )
+texture = ExtResource( 3 )
+
+[node name="Sprite3" type="Sprite" parent="Sprites"]
+position = Vector2( 4, -251 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 2 )
+
+[node name="Sprite4" type="Sprite" parent="Sprites"]
+position = Vector2( 4, -214 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 4 )
+
+[node name="AreaColision" type="Area2D" parent="."]
+rotation = 1.74846e-07
+collision_layer = 32
+collision_mask = 11
+script = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaColision"]
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="AreaColision"]
+position = Vector2( -104.652, -76.3676 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="AreaColision"]
+position = Vector2( 134.35, -79.196 )
+rotation = 1.5708
+shape = SubResource( 3 )
+
+[node name="AreaAtraccion" parent="." instance=ExtResource( 1 )]
+
+[node name="SpriteZonaRecarga" parent="AreaAtraccion" index="1"]
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/default = SubResource( 4 )
+anims/rotar_pendulo = SubResource( 5 )
+anims/rotar_sentido_antihorario = SubResource( 6 )
+anims/rotar_sentido_horario = SubResource( 7 )
+
+[node name="Impacto_SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+
+[node name="PosicionesSpawn" type="Node2D" parent="."]
+script = ExtResource( 10 )
+
+[node name="Norte" type="Position2D" parent="PosicionesSpawn"]
+position = Vector2( 0, -450 )
+
+[node name="Sur" type="Position2D" parent="PosicionesSpawn"]
+position = Vector2( 0, 450 )
+
+[node name="Este" type="Position2D" parent="PosicionesSpawn"]
+position = Vector2( -450, 0 )
+
+[node name="Oeste" type="Position2D" parent="PosicionesSpawn"]
+position = Vector2( 450, 0 )
+
+[node name="TimerSpawnEnemigos" type="Timer" parent="."]
+
+[connection signal="body_entered" from="AreaColision" to="." method="_on_AreaColision_body_entered"]
+[connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
+[connection signal="timeout" from="TimerSpawnEnemigos" to="." method="_on_TimerSpawnEnemigos_timeout"]
+
+[editable path="AreaAtraccion"]
