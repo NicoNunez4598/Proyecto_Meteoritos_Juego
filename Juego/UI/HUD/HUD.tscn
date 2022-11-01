@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Icono_Nave.png" type="Texture" id=1]
 [ext_resource path="res://Juego/UI/HUD/HUD.gd" type="Script" id=2]
 [ext_resource path="res://Juego/UI/HUD/ContenedorInformacion.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Juego/UI/HUD/ContenedorInformacionEnergia.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Juego/UI/Minimapa/Minimapa.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "default"
@@ -73,10 +74,10 @@ margin_bottom = 0.0
 [node name="InfoTiempoRestante" parent="." groups=[
 "contenedor_info",
 ] instance=ExtResource( 3 )]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -357.0
-margin_right = 0.0
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -178.5
+margin_right = 178.5
 
 [node name="InfoLaser" parent="." groups=[
 "contenedor_info",
@@ -109,6 +110,10 @@ margin_bottom = 60.5
 [node name="Label" parent="InfoEscudo" index="1"]
 text = "Energia Escudo
 "
+
+[node name="Minimapa" parent="." groups=[
+"contenedor_info",
+] instance=ExtResource( 5 )]
 
 [editable path="InfoZonaRecarga"]
 [editable path="InfoZonaMeteoritos"]

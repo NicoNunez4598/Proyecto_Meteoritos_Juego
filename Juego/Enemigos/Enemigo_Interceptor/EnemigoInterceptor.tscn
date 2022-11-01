@@ -70,7 +70,9 @@ radius = 360.0
 [sub_resource type="CircleShape2D" id=5]
 radius = 450.0
 
-[node name="EnemigoInterceptor" instance=ExtResource( 2 )]
+[node name="EnemigoInterceptor" groups=[
+"minimapa",
+] instance=ExtResource( 2 )]
 z_index = 38
 z_as_relative = false
 collision_layer = 2

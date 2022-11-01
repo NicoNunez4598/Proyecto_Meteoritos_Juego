@@ -60,6 +60,7 @@ func destruir() -> void:
 		$Sprites/Sprite2.global_position
 	]
 	Eventos.emit_signal("base_destruida", self, posiciones_partes)
+	Eventos.emit_signal("minimapa_objeto_destruido", self)
 	queue_free()
 
 func deteccion_cuadrante() -> Vector2:

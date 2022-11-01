@@ -72,7 +72,9 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 
-[node name="EstacionRecarga" type="Node2D"]
+[node name="EstacionRecarga" type="Node2D" groups=[
+"minimapa",
+]]
 script = ExtResource( 5 )
 
 [node name="AreaColision" type="Area2D" parent="."]
