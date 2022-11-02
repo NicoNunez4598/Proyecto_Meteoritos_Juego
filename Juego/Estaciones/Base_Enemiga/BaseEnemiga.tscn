@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Juego/Estaciones/AreaAtraccion.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Juego/Estaciones/Base_Enemiga/Parte3.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Juego/Estaciones/Base_Enemiga/PosicionesSpawn.gd" type="Script" id=10]
 [ext_resource path="res://Juego/Enemigos/Rutas_Enemigas/RutaEnemigo.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Juego/Enemigos/Rutas_Enemigas/RutaEnemiga2.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Juego/UI/HUD/BarraSalud.tscn" type="PackedScene" id=13]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 72.5139
@@ -29,7 +30,7 @@ height = 79.3481
 
 [sub_resource type="Animation" id=5]
 resource_name = "rotar_pendulo"
-length = 5.0
+length = 4.0
 loop = true
 step = 1.0
 tracks/0/type = "value"
@@ -39,10 +40,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 2, 3, 4, 5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 1, 2, 3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 90.0, -90.0, 90.0, -90.0, 90.0, -90.0 ]
+"values": [ 90.0, -90.0, 90.0, -90.0, 90.0 ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -100,6 +101,15 @@ tracks/1/keys = {
 "update": 0,
 "values": [ 0.0, 360.0 ]
 }
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.670588, 0, 1, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
+border_blend = true
 
 [node name="BaseEnemiga" type="Node2D" groups=[
 "minimapa",
@@ -182,6 +192,15 @@ position = Vector2( -450, 0 )
 position = Vector2( 450, 0 )
 
 [node name="TimerSpawnEnemigos" type="Timer" parent="."]
+
+[node name="BarraSalud" parent="." instance=ExtResource( 13 )]
+margin_left = -107.0
+margin_top = -320.0
+margin_right = 107.0
+margin_bottom = -293.0
+rect_rotation = 0.0
+custom_styles/fg = SubResource( 8 )
+siempre_visible = true
 
 [connection signal="body_entered" from="AreaColision" to="." method="_on_AreaColision_body_entered"]
 [connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]

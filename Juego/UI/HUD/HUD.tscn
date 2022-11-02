@@ -74,10 +74,10 @@ margin_bottom = 0.0
 [node name="InfoTiempoRestante" parent="." groups=[
 "contenedor_info",
 ] instance=ExtResource( 3 )]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -178.5
-margin_right = 178.5
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -357.0
+margin_right = 0.0
 
 [node name="InfoLaser" parent="." groups=[
 "contenedor_info",

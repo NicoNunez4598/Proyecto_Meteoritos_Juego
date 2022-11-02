@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Juego/Naves/Player/danioSFX.ogg" type="AudioStream" id=1]
+[ext_resource path="res://Juego/UI/HUD/BarraSalud.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Juego/Proyectiles/Canion.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Juego/Naves/NaveBase.gd" type="Script" id=5]
 
@@ -19,6 +20,8 @@ script = ExtResource( 5 )
 [node name="DanioSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
 bus = "SFX"
+
+[node name="BarraSalud" parent="." instance=ExtResource( 2 )]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 

@@ -16,9 +16,12 @@ var estado_actual:int = ESTADO.SPAWN
 onready var colisionador:CollisionShape2D = $CollisionShape2D
 onready var danio_sfx:AudioStreamPlayer = $DanioSFX
 onready var canion:Canion = $Canion
+onready var barra_salud:BarraSalud = $BarraSalud
 
 ## Metodos
 func _ready() -> void:
+	barra_salud.max_value = hitpoints
+	barra_salud.value = hitpoints
 	controlador_estados(estado_actual)
 
 func destruir() -> void:
@@ -48,6 +51,7 @@ func recibir_danio(danio: float) -> void:
 	hitpoints -= danio
 	if hitpoints <= 0.0:
 		destruir()
+	barra_salud.controlar_barra(hitpoints, true)
 	danio_sfx.play()
 
 ## Señales Internas
