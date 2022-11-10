@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/MusicaMeteoritos.wav-9b90892d3b7ddc5aa3ec2d48a4f67ee0.sample"
+
+[deps]
+
+source_file="res://Juego/Musica/MusicaMeteoritos.wav"
+dest_files=[ "res://.import/MusicaMeteoritos.wav-9b90892d3b7ddc5aa3ec2d48a4f67ee0.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

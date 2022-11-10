@@ -9,6 +9,8 @@ export var explosion_meteorito:PackedScene = null
 export var sector_meteoritos:PackedScene = null
 export var enemigo_interceptor:PackedScene = null
 export var rele_masa:PackedScene = null
+export var musica_nivel:AudioStream = null
+export var musica_combate:AudioStream = null
 export var tiempo_transicion_camara:float = 1.5
 export var tiempo_limite:int = 10
 
@@ -35,6 +37,8 @@ func _ready() -> void:
 	numero_bases_enemigas = contabilizar_bases_enemigas()
 	player = DatosJuego.get_player_actual()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	MusicaJuego.set_streams(musica_nivel, musica_combate)
+	MusicaJuego.play_musica_nivel()
 	actualizador_timer.start()
 
 ## Metodos Custom
@@ -62,6 +66,7 @@ func crear_contenedores() -> void:
 	add_child(contenedor_sector_enemigos)
 
 func crear_sector_meteoritos(centro_camara:Vector2, numero_peligros:int) -> void:
+	MusicaJuego.transicion_musicas()
 	total_meteoritos = numero_peligros
 	var new_sector_meteoritos:SectorMeteoritos = sector_meteoritos.instance()
 	new_sector_meteoritos.crear(centro_camara, numero_peligros)
@@ -100,6 +105,7 @@ func controlar_meteoritos_restantes() -> void:
 	total_meteoritos -= 1
 	Eventos.emit_signal("cambio_numero_meteoritos", total_meteoritos)
 	if total_meteoritos == 0:
+		MusicaJuego.transicion_musicas()
 		contenedor_sector_meteoritos.get_child(0).queue_free()
 		camara_player.set_puede_hacer_zoom(true)
 		var zoom_actual = camara_player.zoom
@@ -130,15 +136,16 @@ func contabilizar_bases_enemigas() -> int:
 	return $Contenedores_Bases_Enemigas.get_child_count()
 
 func crear_rele() -> void:
-	var new_rele_masa:ReleMasa = rele_masa.instance()
-	var pos_aleatorio:Vector2 = crear_posicion_aleatoria(400.0, 200.0)
-	var margen:Vector2 = Vector2(600.0, 600.0)
-	if pos_aleatorio.x < 0:
-		margen.x *= -1
-	if pos_aleatorio.y < 0:
-		margen.y *= -1
-	new_rele_masa.global_position = player.global_position + crear_posicion_aleatoria(1000.0, 800.0)
-	add_child(new_rele_masa)
+	if player:
+		var new_rele_masa:ReleMasa = rele_masa.instance()
+		var pos_aleatorio:Vector2 = crear_posicion_aleatoria(400.0, 200.0)
+		var margen:Vector2 = Vector2(600.0, 600.0)
+		if pos_aleatorio.x < 0:
+			margen.x *= -1
+		if pos_aleatorio.y < 0:
+			margen.y *= -1
+		new_rele_masa.global_position = player.global_position + crear_posicion_aleatoria(1000.0, 800.0)
+		add_child(new_rele_masa)
 
 ## Conexion de Señales Externas
 func _on_disparo(proyectil:Proyectil) -> void:
