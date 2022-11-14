@@ -70,6 +70,7 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 margin_top = -121.0
 margin_bottom = 0.0
+auto_ocultar = true
 
 [node name="InfoTiempoRestante" parent="." groups=[
 "contenedor_info",
@@ -78,6 +79,7 @@ anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -357.0
 margin_right = 0.0
+auto_ocultar = true
 
 [node name="InfoLaser" parent="." groups=[
 "contenedor_info",

@@ -94,7 +94,9 @@ func modificar_posicion_iconos() -> void:
 		pos_icono.x = clamp(pos_icono.x, 0, zona_renderizado.rect_size.x)
 		pos_icono.y = clamp(pos_icono.y, 0, zona_renderizado.rect_size.y)
 		item_icono.position = pos_icono
-		if zona_renderizado.get_rect().has_point(pos_icono - zona_renderizado.rect_position):
+		var pos_icono_descentrado:bool = pos_icono.x != 0 and pos_icono.y != 0
+		var item_en_rect_mini_mapa:bool = zona_renderizado.get_rect().has_point(pos_icono - zona_renderizado.rect_position)
+		if item_en_rect_mini_mapa and pos_icono_descentrado:
 			item_icono.scale = Vector2(0.5, 0.5)
 		else:
 			item_icono.scale = Vector2(0.3, 0.3)

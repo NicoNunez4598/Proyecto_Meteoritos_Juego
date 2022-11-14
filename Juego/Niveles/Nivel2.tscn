@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Juego/Niveles/NivelBase.tscn" type="PackedScene" id=1]
+
+[node name="Nivel2" instance=ExtResource( 1 )]
+prox_nivel = "res://Juego/Niveles/Nivel3.tscn"
+
+[node name="StarFieldBackground" parent="." index="10"]
+color_fondo = Color( 0.0509804, 0.0392157, 0.239216, 1 )
