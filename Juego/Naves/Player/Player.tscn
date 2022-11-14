@@ -48,6 +48,7 @@ proyectil = ExtResource( 11 )
 position = Vector2( -19, 0 )
 
 [node name="MotorSFX" parent="." index="6" instance=ExtResource( 7 )]
+bus = "SFX"
 
 [node name="AnimationPlayer" parent="." index="7" instance=ExtResource( 8 )]
 

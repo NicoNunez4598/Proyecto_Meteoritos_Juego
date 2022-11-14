@@ -242,6 +242,7 @@ anims/super_activada = SubResource( 4 )
 
 [node name="ActivadoSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
+bus = "SFX"
 
 [node name="DeteccionPlayer" type="Area2D" parent="."]
 

@@ -1,8 +1,54 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Juego/Niveles/NivelBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Juego/Estaciones/Base_Enemiga/BaseEnemiga.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Juego/Peligros/SectorDePeligro.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Juego/Estaciones/Estacion_Recarga/EstacionRecarga.tscn" type="PackedScene" id=4]
 
 [node name="Nivel10" instance=ExtResource( 1 )]
+prox_nivel = "res://Juego/UI/MenuPrincipal/PantallaFinal.tscn"
+
+[node name="SectorDePeligro" parent="TriggersLluviaMeteoritos" index="0" instance=ExtResource( 3 )]
+position = Vector2( 2864.79, 1067.94 )
+tipo_peligro = "Meteorito"
+
+[node name="SectorDePeligro2" parent="TriggersLluviaMeteoritos" index="1" instance=ExtResource( 3 )]
+position = Vector2( -1356.11, -1169.65 )
+tipo_peligro = "Meteorito"
+
+[node name="EstacionRecarga" parent="Contenedor_de_Estaciones" index="0" instance=ExtResource( 4 )]
+position = Vector2( -3576.75, -2932.59 )
+
+[node name="EstacionRecarga2" parent="Contenedor_de_Estaciones" index="1" instance=ExtResource( 4 )]
+position = Vector2( 5356.65, 2830.89 )
+
+[node name="SectorDePeligro" parent="TriggersSectorEnemigos" index="0" instance=ExtResource( 3 )]
+position = Vector2( 4034.44, -1712.09 )
+tipo_peligro = "Enemigo"
+numero_peligros = 8
+
+[node name="SectorDePeligro2" parent="TriggersSectorEnemigos" index="1" instance=ExtResource( 3 )]
+position = Vector2( -2135.88, 1813.8 )
+tipo_peligro = "Enemigo"
+numero_peligros = 8
+
+[node name="BaseEnemiga" parent="Contenedores_Bases_Enemigas" index="0" instance=ExtResource( 2 )]
+position = Vector2( 6509.34, 16.9514 )
+
+[node name="BaseEnemiga2" parent="Contenedores_Bases_Enemigas" index="1" instance=ExtResource( 2 )]
+position = Vector2( -33.9033, 3220.77 )
+
+[node name="BaseEnemiga3" parent="Contenedores_Bases_Enemigas" index="2" instance=ExtResource( 2 )]
+position = Vector2( -3915.78, -16.9512 )
+
+[node name="BaseEnemiga4" parent="Contenedores_Bases_Enemigas" index="3" instance=ExtResource( 2 )]
+position = Vector2( -16.9521, -2983.45 )
+
+[node name="BaseEnemiga5" parent="Contenedores_Bases_Enemigas" index="4" instance=ExtResource( 2 )]
+position = Vector2( 5237.99, -3237.72 )
+
+[node name="BaseEnemiga6" parent="Contenedores_Bases_Enemigas" index="5" instance=ExtResource( 2 )]
+position = Vector2( -3814.07, 3644.55 )
 
 [node name="StarFieldBackground" parent="." index="10"]
 color_fondo = Color( 0, 0, 0, 1 )

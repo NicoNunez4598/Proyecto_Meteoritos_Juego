@@ -8,6 +8,7 @@ prox_nivel = "res://Juego/Niveles/Nivel2.tscn"
 
 [node name="BaseEnemiga" parent="Contenedores_Bases_Enemigas" index="0" instance=ExtResource( 2 )]
 position = Vector2( 1044.13, 413.376 )
+numero_enemigos = 4.0
 
 [node name="StarFieldBackground" parent="." index="10"]
 color_fondo = Color( 0.141176, 0.0431373, 0.270588, 1 )

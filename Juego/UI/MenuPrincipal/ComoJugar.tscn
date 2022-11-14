@@ -1,0 +1,145 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Juego/Niveles/Fondos/StarFieldBackground.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Juego/UI/MenuPrincipal/Button_jugar.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Juego/UI/MenuPrincipal/ComoJugar.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 20
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 20
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 20
+font_data = ExtResource( 2 )
+
+[node name="ComoJugar" type="Node"]
+script = ExtResource( 3 )
+nivel_inicial = "res://Juego/Niveles/Nivel1.tscn"
+menu_principal = "res://Juego/UI/MenuPrincipal/MenuPrincipal.tscn"
+
+[node name="StarFieldBackground" parent="." instance=ExtResource( 1 )]
+color_fondo = Color( 0.231373, 0.0823529, 0.309804, 1 )
+
+[node name="ControlesMoviemiento" type="TextEdit" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -285.086
+margin_top = -271.576
+margin_right = 287.914
+margin_bottom = -121.576
+custom_fonts/font = SubResource( 1 )
+text = "                         Controles de Movimento
+            W/ARRIBA: movimiento hacia adelante
+            S/ABAJO: movimiento hacia atras
+            A/IZQUIERDA: girar hacia la izquierda
+            D/DERECHA: girar hacia la derecha"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ControlesLaser" type="TextEdit" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -288.5
+margin_top = -82.0
+margin_right = 288.5
+margin_bottom = 82.0
+custom_fonts/font = SubResource( 2 )
+text = "                             Controles de Laser
+  Mantener Barra Espaciadora: Disparar laser
+  Mantener Tecla T: Recargar energia del laser 
+  (Solamente se puede recargar si hay 
+  una estacion de recarga y la nave esta en el 
+  rango de la zona de recarga)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ControlesEscudo" type="TextEdit" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -282.843
+margin_top = 128.632
+margin_right = 294.157
+margin_bottom = 295.632
+custom_fonts/font = SubResource( 3 )
+text = "                             Controles de Escudo
+  Pulsar Tecla Q: Activar Escudo
+  Mantener Tecla R: Recargar Energia de Escudo
+  (Solamente se puede recargar si hay 
+  una estacion de recarga y la nave esta en el 
+  rango de la zona de recarga)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BotonJugar" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -412.331
+margin_top = 333.473
+margin_right = -209.331
+margin_bottom = 401.473
+custom_fonts/font = SubResource( 4 )
+text = "Jugar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BotonSalir" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 216.833
+margin_top = 339.238
+margin_right = 391.833
+margin_bottom = 400.238
+custom_fonts/font = SubResource( 5 )
+text = "Salir"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BotonVolver" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -72.2864
+margin_top = 338.693
+margin_right = 97.7136
+margin_bottom = 398.693
+custom_fonts/font = SubResource( 6 )
+text = "Volver"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="BotonJugar" to="." method="_on_BotonJugar_pressed"]
+[connection signal="pressed" from="BotonSalir" to="." method="_on_BotonSalir_pressed"]
+[connection signal="pressed" from="BotonVolver" to="." method="_on_BotonVolver_pressed"]

@@ -1,9 +1,44 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Juego/Niveles/NivelBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Juego/Estaciones/Estacion_Recarga/EstacionRecarga.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Juego/Estaciones/Base_Enemiga/BaseEnemiga.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Juego/Peligros/SectorDePeligro.tscn" type="PackedScene" id=4]
 
 [node name="Nivel6" instance=ExtResource( 1 )]
 prox_nivel = "res://Juego/Niveles/Nivel7.tscn"
+
+[node name="SectorDePeligro" parent="TriggersLluviaMeteoritos" index="0" instance=ExtResource( 4 )]
+position = Vector2( 4527.78, 3310.4 )
+tipo_peligro = "Meteorito"
+numero_peligros = 3
+
+[node name="SectorDePeligro2" parent="TriggersLluviaMeteoritos" index="1" instance=ExtResource( 4 )]
+position = Vector2( -2007.6, 0 )
+tipo_peligro = "Meteorito"
+numero_peligros = 3
+
+[node name="EstacionRecarga" parent="Contenedor_de_Estaciones" index="0" instance=ExtResource( 2 )]
+position = Vector2( -3801.62, 3609.41 )
+
+[node name="EstacionRecarga2" parent="Contenedor_de_Estaciones" index="1" instance=ExtResource( 2 )]
+position = Vector2( 4826.78, -3993.84 )
+
+[node name="BaseEnemiga" parent="Contenedores_Bases_Enemigas" index="0" instance=ExtResource( 3 )]
+position = Vector2( 6474.62, -11.9863 )
+numero_enemigos = 8.0
+
+[node name="BaseEnemiga4" parent="Contenedores_Bases_Enemigas" index="1" instance=ExtResource( 3 )]
+position = Vector2( -5101.11, 9.37109 )
+numero_enemigos = 8.0
+
+[node name="BaseEnemiga2" parent="Contenedores_Bases_Enemigas" index="2" instance=ExtResource( 3 )]
+position = Vector2( 9.37085, 4784.53 )
+numero_enemigos = 8.0
+
+[node name="BaseEnemiga3" parent="Contenedores_Bases_Enemigas" index="3" instance=ExtResource( 3 )]
+position = Vector2( 21.3574, -5053.46 )
+numero_enemigos = 8.0
 
 [node name="StarFieldBackground" parent="." index="10"]
 color_fondo = Color( 0.101961, 0.309804, 0.0705882, 1 )

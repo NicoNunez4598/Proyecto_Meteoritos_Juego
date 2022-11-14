@@ -324,3 +324,4 @@ anims/Explode = SubResource( 17 )
 
 [node name="ExplosionSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
+bus = "SFX"

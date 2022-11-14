@@ -1,9 +1,9 @@
-#MenuPrincipal.gd
+#ComoJugar.gd
 extends Node
 
 ## Atributos Export
 export(String, FILE, "*.tscn") var nivel_inicial = ""
-export(String, FILE, "*.tscn") var Como_Jugar = ""
+export(String, FILE, "*.tscn") var menu_principal = ""
 
 ## Metodos
 func _ready() -> void:
@@ -19,6 +19,6 @@ func _on_BotonSalir_pressed():
 	MusicaJuego.play_boton()
 	get_tree().quit()
 
-func _on_BotonComoJugar_pressed():
+func _on_BotonVolver_pressed():
 	MusicaJuego.play_boton()
-	get_tree().change_scene(Como_Jugar)
+	get_tree().change_scene(menu_principal)

@@ -42,6 +42,7 @@ func on_cambio_numero_meteoritos(numero: int) -> void:
 	info_zona_meteoritos.modificar_texto("Meteoritos\n Restantes\n {cantidad}".format({"cantidad":numero}))
 
 func _on_actualizar_info_tiempo(tiempo_restante: int) -> void:
+# warning-ignore:narrowing_conversion
 	var minutos:int = floor(tiempo_restante * 0.01666666666667)
 	var segundos:int = tiempo_restante % 60
 	info_tiempo_restante.modificar_texto(

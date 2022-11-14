@@ -1,9 +1,26 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Juego/Niveles/NivelBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Juego/Estaciones/Base_Enemiga/BaseEnemiga.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Juego/Estaciones/Estacion_Recarga/EstacionRecarga.tscn" type="PackedScene" id=3]
 
 [node name="Nivel3" instance=ExtResource( 1 )]
 prox_nivel = "res://Juego/Niveles/Nivel4.tscn"
+
+[node name="EstacionRecarga" parent="Contenedor_de_Estaciones" index="0" instance=ExtResource( 3 )]
+position = Vector2( -2454.52, 19.0273 )
+
+[node name="BaseEnemiga" parent="Contenedores_Bases_Enemigas" index="0" instance=ExtResource( 2 )]
+position = Vector2( 3843.52, -19.0271 )
+numero_enemigos = 4.0
+
+[node name="BaseEnemiga2" parent="Contenedores_Bases_Enemigas" index="1" instance=ExtResource( 2 )]
+position = Vector2( -9.51343, 2169.11 )
+numero_enemigos = 4.0
+
+[node name="BaseEnemiga3" parent="Contenedores_Bases_Enemigas" index="2" instance=ExtResource( 2 )]
+position = Vector2( -14.2542, -2168.76 )
+numero_enemigos = 4.0
 
 [node name="StarFieldBackground" parent="." index="10"]
 color_fondo = Color( 0.0705882, 0.215686, 0.309804, 1 )

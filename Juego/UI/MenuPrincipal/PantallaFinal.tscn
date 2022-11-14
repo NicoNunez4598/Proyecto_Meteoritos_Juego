@@ -1,0 +1,78 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://PantallaFinal.gd" type="Script" id=1]
+[ext_resource path="res://Juego/UI/MenuPrincipal/Button_jugar.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Juego/Niveles/Fondos/StarFieldBackground.tscn" type="PackedScene" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 100
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 20
+font_data = ExtResource( 2 )
+
+[node name="PantallaFinal" type="Node"]
+script = ExtResource( 1 )
+nivel_inicial = "res://Juego/Niveles/Nivel1.tscn"
+menu_principal = "res://Juego/UI/MenuPrincipal/MenuPrincipal.tscn"
+
+[node name="StarFieldBackground" parent="." instance=ExtResource( 3 )]
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -336.177
+margin_top = 401.949
+margin_right = 346.823
+margin_bottom = 514.949
+custom_fonts/font = SubResource( 1 )
+text = "¡¡¡GANASTE!!!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BotonVolver" type="Button" parent="."]
+margin_left = 907.72
+margin_top = 670.613
+margin_right = 1100.72
+margin_bottom = 699.613
+custom_fonts/font = SubResource( 2 )
+text = "Volver Al Menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BotonJugar" type="Button" parent="."]
+margin_left = 648.294
+margin_top = 669.581
+margin_right = 836.294
+margin_bottom = 698.581
+custom_fonts/font = SubResource( 3 )
+text = "Volver a Jugar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BotonSalir" type="Button" parent="."]
+margin_left = 1171.77
+margin_top = 671.7
+margin_right = 1246.77
+margin_bottom = 700.7
+custom_fonts/font = SubResource( 4 )
+text = "Salir"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="BotonVolver" to="." method="_on_BotonVolver_pressed"]
+[connection signal="pressed" from="BotonJugar" to="." method="_on_BotonJugar_pressed"]
+[connection signal="pressed" from="BotonSalir" to="." method="_on_BotonSalir_pressed"]

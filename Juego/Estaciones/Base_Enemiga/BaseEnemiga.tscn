@@ -173,6 +173,7 @@ anims/rotar_sentido_horario = SubResource( 7 )
 
 [node name="Impacto_SFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 7 )
+bus = "SFX"
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 
